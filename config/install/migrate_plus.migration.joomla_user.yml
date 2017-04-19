@@ -36,6 +36,35 @@ process:
     # 'alice_1'.
     postfix: _
 
+  # Another new process plugin - callback. This allows us to filter an incoming
+  # source value through an arbitrary PHP function. The function called must
+  # have one required argument.
+  created:
+    plugin: callback
+    # The 'registered' timestamp in the source data is a string of the form
+    # 'yyyy-mm-dd hh:mm:ss', but Drupal wants a UNIX timestamp for 'created'.
+    source: registerDate
+    callable: strtotime
+  field_name: name
+  access: block
+
+  # Our source data only has a single timestamp value, 'registered', which we
+  # want to use for all four of Drupal's user timestamp fields. We could
+  # duplicate the callback plugin we used for 'created' above - but we have a
+  # shortcut. Putting an @ sign at the beginning of the source value indicates
+  # that it is to be interpreted as a *destination* field name instead of a
+  # *source* field name. Thus, if a value we need in more than one place
+  # requires some processing beyond simply copying it directly, we can perform
+  # that processing a single time and use the result in multiple places.
+  changed:
+    plugin: callback
+    # The 'registered' timestamp in the source data is a string of the form
+    # 'yyyy-mm-dd hh:mm:ss', but Drupal wants a UNIX timestamp for 'created'.
+    source: registerDate
+    callable: strtotime
+  access: '@created'
+  login: '@created'
+
 migration_dependencies: {}
 
 # When a module is creating a custom content type it needs to add an
