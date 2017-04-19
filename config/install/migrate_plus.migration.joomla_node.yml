@@ -19,6 +19,17 @@ process:
   sticky:
     plugin: default_value
     default_value: 0
+  langcode:
+    plugin: default_value
+    source: language
+    default_value: "und"
+  status: state
+  created: created
+  #changed: modified
+  #promote: featured
+  #revision_uid: revision_uid
+  #revision_log: log
+  #revision_timestamp: timestamp
   # @todo this later
   # field_tags:
   #   plugin: migration
