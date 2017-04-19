@@ -19,6 +19,22 @@ process:
   sticky:
     plugin: default_value
     default_value: 0
+  #langcode:
+  #  plugin: default_value
+  #  source: language
+  #  default_value: "und"
+  #status: state
+  created:
+    plugin: callback
+    # The 'registered' timestamp in the source data is a string of the form
+    # 'yyyy-mm-dd hh:mm:ss', but Drupal wants a UNIX timestamp for 'created'.
+    source: created
+    callable: strtotime
+  #changed: modified
+  #promote: featured
+  #revision_uid: revision_uid
+  #revision_log: log
+  #revision_timestamp: timestamp
   # @todo this later
   # field_tags:
   #   plugin: migration
