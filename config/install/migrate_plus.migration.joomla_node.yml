@@ -28,7 +28,7 @@ process:
     plugin: callback
     # The 'registered' timestamp in the source data is a string of the form
     # 'yyyy-mm-dd hh:mm:ss', but Drupal wants a UNIX timestamp for 'created'.
-    source: registerDate
+    source: created
     callable: strtotime
   #changed: modified
   #promote: featured
