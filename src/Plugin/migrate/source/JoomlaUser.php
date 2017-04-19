@@ -19,7 +19,8 @@ class JoomlaUser extends SqlBase {
    */
   public function query() {
     return $this->select('xi83f_users', 'ju')
-                ->fields('ju', ['id', 'name', 'username', 'email', 'password']);
+                ->fields('ju', ['id', 'name', 'username', 'email', 'password', 'block',
+                  'sendEmail', 'registerDate', 'lastvisitDate', 'activation', 'params','lastResetTime', 'resetCount', 'otpKey', 'otep', 'requireReset']);
   }
 
   /**
@@ -32,6 +33,19 @@ class JoomlaUser extends SqlBase {
       'username' => $this->t('Account name (for login)'),
       'email' => $this->t('Account email'),
       'password' => $this->t('Account password (raw)'),
+      'block' => $this->t('User is Blocked'),
+      'sendEmail' => $this->t('Email is from'),
+      'registerDate' => $this->t('Register Date'),
+      'lastvisitDate' => $this->t('Last Visit'),
+      'activation' => $this->t('Activation'),
+      'params' => $this->t('Parameters'),
+      'lastResetTime' => $this->t('Last Reset Time'),
+      'resetCount' => $this->t('Reset Count'),
+      'optKey' => $this->t('Optional Key (?????)'),
+      'otep' => $this->t('OTEP (????)'),
+      'requireReset' => $this->t('Require Reset ???'),
+
+
     ];
 
     return $fields;
