@@ -72,6 +72,16 @@ process:
     # with the Drupal term ID of the referenced style (or NULL if style_parent
     # was empty).
     source: parent_id
+  'description/value': description
+  # Another new process plugin - callback. This allows us to filter an incoming
+  # source value through an arbitrary PHP function. The function called must
+  # have one required argument.
+  changed:
+    plugin: callback
+    # The 'registered' timestamp in the source data is a string of the form
+    # 'yyyy-mm-dd hh:mm:ss', but Drupal wants a UNIX timestamp for 'created'.
+    source: modified_time
+    callable: strtotime
 
 # We'll learn more about dependencies in beer_node - here, we leave them empty.
 migration_dependencies: {}
