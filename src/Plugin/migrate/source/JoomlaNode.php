@@ -30,8 +30,10 @@ class JoomlaNode extends SqlBase {
      * below.
      */
     $query = $this->select('xi83f_content', 'jcon')
-                  ->fields('jcon', ['id', 'title', 'introtext', 'catid',
-                  'created_by']);
+                  ->fields('jcon', ['id', 'asset_id', 'title', 'alias', 'introtext', 'fulltext', 'state', 'catid', 'created',
+                      'created_by', 'created_by_alias', 'modified', 'modified_by', 'checked_out',
+                      'checked_out_time', 'publish_up', 'publish_down', 'images', 'urls', 'attribs', 'version',
+                      'ordering', 'metakey', 'metadesc', 'access', 'hits', 'metadata', 'featured', 'language', 'xreference']);
     return $query;
   }
 
@@ -40,11 +42,36 @@ class JoomlaNode extends SqlBase {
    */
   public function fields() {
     $fields = [
-      'id' => $this->t('ID'),
-      'title' => $this->t('Title'),
-      'introtext' => $this->t('Body'),
-      'catid' => $this->t('Category ID'),
-      'created_by' => $this->t('Author ID'),
+        'id' => $this->t('ID'),
+        'asset_id' => $this->t('Asset ID'),
+        'title' => $this->t('Title'),
+        'alias' => $this->t('Article URL'),
+        'introtext' => $this->t('Intro Text'),
+        'fulltext' => $this->t('Full Text'),
+        'state' => $this->t('State'),
+        'catid' => $this->t('Category ID'),
+        'created' => $this->t('Created Date'),
+        'created_by' => $this->t('Author ID'),
+        'created_by_alias' => $this->t('Created By Alias'),
+        'modified' => $this->t('Modified Date'),
+        'modified_by' => $this->t('Modified By'),
+        'checked_out' => $this->t('Checked Out Date'),
+        'checked_out_time' => $this->t('Checked Out Time'),
+        'publish_up' => $this->t('Published Up?'),
+        'publish_down' => $this->t('Published Down?'),
+        'images' => $this->t('Images'),
+        'urls' => $this->t('URLs'),
+        'attribs' => $this->t('Attibutes'),
+        'version' => $this->t('Version'),
+        'ordering' => $this->t('Ordering'),
+        'metakey' => $this->t('Metatag Keywords'),
+        'metadesc' => $this->t('Meta Description'),
+        'access' => $this->t('Access'),
+        'hits' => $this->t('Hits'),
+        'metadata' => $this->t('Metadata'),
+        'featured' => $this->t('Featured'),
+        'language' => $this->t('Language'),
+        'xreference' => $this->t('Xreference'),
     ];
 
     return $fields;
