@@ -44,8 +44,6 @@ class JoomlaUser extends SqlBase {
       'optKey' => $this->t('Optional Key (?????)'),
       'otep' => $this->t('OTEP (????)'),
       'requireReset' => $this->t('Require Reset ???'),
-
-
     ];
 
     return $fields;
