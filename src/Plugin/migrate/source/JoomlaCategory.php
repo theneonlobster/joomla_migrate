@@ -34,7 +34,11 @@ class JoomlaCategory extends SqlBase {
      * source plugin.
      */
     return $this->select('xi83f_categories', 'jcat')
-      ->fields('jcat', ['id', 'parent_id', 'title'])
+      ->fields('jcat', ['id', 'asset_id', 'parent_id', 'lft', 'rgt', 'level',
+        'path', 'extension', 'title', 'alias', 'note', 'description',
+        'published', 'checked_out', 'checked_out_time', 'access', 'params',
+        'metadesc', 'metakey', 'metadata', 'created_user_id', 'created_time',
+        'modified_user_id', 'modified_time', 'hits', 'language', 'version'])
       // We sort this way to ensure parent terms are imported first.
       ->orderBy('parent_id', 'ASC');
   }
@@ -50,9 +54,33 @@ class JoomlaCategory extends SqlBase {
      * to humans what the field represents. You should always
      */
     $fields = [
-      'id' => $this->t('Tag ID'),
-      'parent_id' => $this->t('Parent ID'),
+      'id' => $this->t('Category ID'),
+      'asset_id' => $this->t('Asset ID'),
+      'parent_id' => $this->t('Parent category ID'),
+      'lft' => $this->t('Unknown'),
+      'rgt' => $this->t('Unknown'),
+      'level' => $this->t('N/A'),
+      'path' => $this->t('PATHalias?'),
+      'extension' => $this->t('Category type'),
       'title' => $this->t('Title'),
+      'alias' => $this->t('pathALIAS?'),
+      'note' => $this->t('Note'),
+      'description' => $this->t('Description'),
+      'published' => $this->t('Published boolean'),
+      'checked_out' => $this->t('Checked out boolean'),
+      'checked_out_time' => $this->t('Checked out time'),
+      'access' => $this->t('Unknown'),
+      'params' => $this->t('Serialized data'),
+      'metadesc' => $this->t('Metadesc'),
+      'metakey' => $this->t('Metakey'),
+      'metadata' => $this->t('Metadata'),
+      'created_user_id' => $this->t('Created user ID'),
+      'created_time' => $this->t('Created time'),
+      'modified_user_id' => $this->t('Modified user ID'),
+      'modified_time' => $this->t('Modified time'),
+      'hits' => $this->t('Hits'),
+      'language' => $this->t('Language'),
+      'version' => $this->t('Version'),
     ];
 
     return $fields;
