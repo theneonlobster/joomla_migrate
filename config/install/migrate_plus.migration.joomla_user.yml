@@ -46,7 +46,7 @@ process:
     source: registerDate
     callable: strtotime
   field_name: name
-  access: activation
+  access: block
 
   # Our source data only has a single timestamp value, 'registered', which we
   # want to use for all four of Drupal's user timestamp fields. We could
