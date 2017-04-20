@@ -30,10 +30,39 @@ class JoomlaNode extends SqlBase {
      * below.
      */
     $query = $this->select('xi83f_content', 'jcon')
-                  ->fields('jcon', ['id', 'asset_id', 'title', 'alias', 'introtext', 'fulltext', 'state', 'catid', 'created',
-                      'created_by', 'created_by_alias', 'modified', 'modified_by', 'checked_out',
-                      'checked_out_time', 'publish_up', 'publish_down', 'images', 'urls', 'attribs', 'version',
-                      'ordering', 'metakey', 'metadesc', 'access', 'hits', 'metadata', 'featured', 'language', 'xreference']);
+                  ->fields('jcon', [
+                    'id',
+                    'asset_id',
+                    'title',
+                    'alias',
+                    'introtext',
+                    // For some inexplicable reason, Drupal hates this field.
+                    // 'fulltext',
+                    'state',
+                    'catid',
+                    'created',
+                    'created_by',
+                    'created_by_alias',
+                    'modified',
+                    'modified_by',
+                    'checked_out',
+                    'checked_out_time',
+                    'publish_up',
+                    'publish_down',
+                    'images',
+                    'urls',
+                    'attribs',
+                    'version',
+                    'ordering',
+                    'metakey',
+                    'metadesc',
+                    'access',
+                    'hits',
+                    'metadata',
+                    'featured',
+                    'language',
+                    'xreference',
+                  ]);
     return $query;
   }
 
@@ -47,7 +76,7 @@ class JoomlaNode extends SqlBase {
       'title' => $this->t('Title'),
       'alias' => $this->t('Article URL'),
       'introtext' => $this->t('Intro Text'),
-      'fulltext' => $this->t('Full Text'),
+      // 'fulltext' => $this->t('Full Text'),
       'state' => $this->t('State'),
       'catid' => $this->t('Category ID'),
       'created' => $this->t('Created Date'),
