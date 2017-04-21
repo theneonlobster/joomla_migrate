@@ -36,10 +36,10 @@ process:
   #revision_log: log
   #revision_timestamp: timestamp
   # @todo this later
-  # field_tags:
-  #   plugin: migration
-  #   migration: joomla_tag
-  #   source: tags
+  field_tags:
+    plugin: migration
+    migration: joomla_tag
+    source: tag_id
   field_legacy_category:
     plugin: migration
     migration: joomla_category

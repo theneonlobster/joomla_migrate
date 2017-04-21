@@ -62,9 +62,9 @@ class JoomlaNode extends SqlBase {
                     'metadata',
                     'featured',
                     'language',
-                    'xreference',
+                    'xreference']);
+    $query->fields('jctm', [
                     'tag_id']);
-    // How do we get back the tag_id?
     return $query;
   }
 
