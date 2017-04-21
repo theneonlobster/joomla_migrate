@@ -55,6 +55,7 @@ migration_dependencies:
   required:
     - joomla_user
     - joomla_category
+    - joomla_tag
 dependencies:
   enforced:
     module:

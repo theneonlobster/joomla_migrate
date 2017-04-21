@@ -29,8 +29,9 @@ class JoomlaNode extends SqlBase {
      * the base node data here, and pull in the relationships in prepareRow()
      * below.
      */
-    $query = $this->select('xi83f_content', 'jcon')
-                  ->fields('jcon', [
+    $query = $this->select('xi83f_content', 'jcon');
+    $query->join('xi83f_contentitem_tag_map', 'jctm', 'jcon.id = jctm.content_item_id');
+    $query->fields('jcon', [
                     'id',
                     'asset_id',
                     'title',
@@ -62,7 +63,8 @@ class JoomlaNode extends SqlBase {
                     'featured',
                     'language',
                     'xreference',
-                  ]);
+                    'tag_id']);
+    // How do we get back the tag_id?
     return $query;
   }
 
@@ -101,6 +103,7 @@ class JoomlaNode extends SqlBase {
       'featured' => $this->t('Featured'),
       'language' => $this->t('Language'),
       'xreference' => $this->t('Xreference'),
+      'tag_id' => $this->t('tag_id'),
     ];
 
     return $fields;
