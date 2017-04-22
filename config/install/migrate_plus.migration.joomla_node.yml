@@ -49,6 +49,9 @@ process:
   # addition to the full text value. We use / to separate the field name from
   # the internal field value being set, and put it in quotes because / is a
   # YAML special character.
+  'body/format':
+    plugin: default_value
+    default_value: rich_text
   'body/value': introtext
   # 'body/summary': fulltext
 migration_dependencies:

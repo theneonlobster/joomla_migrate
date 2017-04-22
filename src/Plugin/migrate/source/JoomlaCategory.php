@@ -33,7 +33,10 @@ class JoomlaCategory extends SqlBase {
      * that the query is executed against the database configured for this
      * source plugin.
      */
-    return $this->select('xi83f_categories', 'jcat')
+    $config = \Drupal::config('joomlamigrate.settings');
+    $database = $config->get('database');
+    $prefix = $config->get('table_prefix');
+    return $this->select($prefix . 'categories', 'jcat')
       ->fields('jcat', ['id', 'asset_id', 'parent_id', 'lft', 'rgt', 'level',
         'path', 'extension', 'title', 'alias', 'note', 'description',
         'published', 'checked_out', 'checked_out_time', 'access', 'params',

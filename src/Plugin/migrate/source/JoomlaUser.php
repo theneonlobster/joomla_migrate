@@ -18,7 +18,10 @@ class JoomlaUser extends SqlBase {
    * {@inheritdoc}
    */
   public function query() {
-    return $this->select('xi83f_users', 'ju')
+    $config = \Drupal::config('joomlamigrate.settings');
+    $database = $config->get('database');
+    $prefix = $config->get('table_prefix');
+    return $this->select($prefix . 'users', 'ju')
                 ->fields('ju', ['id', 'name', 'username', 'email', 'password', 'block',
                   'sendEmail', 'registerDate', 'lastvisitDate', 'activation', 'params','lastResetTime', 'resetCount', 'otpKey', 'otep', 'requireReset']);
   }

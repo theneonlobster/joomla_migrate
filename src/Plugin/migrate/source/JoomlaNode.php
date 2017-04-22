@@ -29,8 +29,11 @@ class JoomlaNode extends SqlBase {
      * the base node data here, and pull in the relationships in prepareRow()
      * below.
      */
-    $query = $this->select('xi83f_content', 'jcon');
-    $query->join('xi83f_contentitem_tag_map', 'jctm', 'jcon.id = jctm.content_item_id');
+    $config = \Drupal::config('joomlamigrate.settings');
+    $database = $config->get('database');
+    $prefix = $config->get('table_prefix');
+    $query = $this->select($prefix . 'content', 'jcon');
+    $query->join($prefix . 'contentitem_tag_map', 'jctm', 'jcon.id = jctm.content_item_id');
     $query->fields('jcon', [
                     'id',
                     'asset_id',

@@ -33,7 +33,10 @@ class JoomlaTag extends SqlBase {
      * that the query is executed against the database configured for this
      * source plugin.
      */
-    return $this->select('xi83f_tags', 'jtag')
+    $config = \Drupal::config('joomlamigrate.settings');
+    $database = $config->get('database');
+    $prefix = $config->get('table_prefix');
+    return $this->select($prefix . 'tags', 'jtag')
       ->fields('jtag', ['id', 'parent_id', 'lft', 'rgt', 'level', 'path',
         'title', 'alias', 'note', 'description', 'published', 'checked_out',
         'checked_out_time', 'access', 'params', 'metadesc', 'metakey',
