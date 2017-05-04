@@ -19,10 +19,18 @@ process:
   sticky:
     plugin: default_value
     default_value: 0
-  #langcode:
-  #  plugin: default_value
-  #  source: language
-  #  default_value: "und"
+  # Notes - occasionally you will get an error about
+  # joomlamigrate.settings already existing when re-installing
+  # a workaround is to run drush config-delete joomlamigrate.settings
+  # clear cache and run the install again
+  # PREPROCESSING STEPS
+  # prepare Joomla database language field in content table to
+  # display as en for english or es for spanish instead of en-US
+  # or es-ES
+  langcode:
+    plugin: default_value
+    source: language
+    default_value: "und"
   #status: state
   created:
     plugin: callback
