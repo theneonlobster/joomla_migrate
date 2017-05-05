@@ -7,12 +7,12 @@ migration_group: joomla
 source:
   plugin: joomla_user
 destination:
-  plugin: entity:user
+  plugin: entity_user
 process:
   pass: password
   mail: email
   init: email
-  # status: status
+  status: status
   roles:
     plugin: default_value
     default_value: 2
@@ -24,7 +24,7 @@ process:
   name:
     plugin: dedupe_entity
     # The name of the source field containing the username.
-    source: username
+    source: name
     # These next two settings identify the destination-side field to check for
     # duplicates. They say "see if the incoming 'name' matches any existing
     # 'name' field in any 'user' entity".
@@ -45,7 +45,7 @@ process:
     # 'yyyy-mm-dd hh:mm:ss', but Drupal wants a UNIX timestamp for 'created'.
     source: registerDate
     callable: strtotime
-  field_name: name
+  full_name: name
   access: block
 
   # Our source data only has a single timestamp value, 'registered', which we
