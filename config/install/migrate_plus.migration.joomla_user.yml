@@ -7,12 +7,12 @@ migration_group: joomla
 source:
   plugin: joomla_user
 destination:
-  plugin: entity:user
+  plugin: entity_user
 process:
   pass: password
   mail: email
   init: email
-  # status: status
+  status: status
   roles:
     plugin: default_value
     default_value: 2
