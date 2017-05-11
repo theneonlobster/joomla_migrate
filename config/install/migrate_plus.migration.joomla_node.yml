@@ -30,7 +30,12 @@ process:
     # 'yyyy-mm-dd hh:mm:ss', but Drupal wants a UNIX timestamp for 'created'.
     source: created
     callable: strtotime
-  #changed: modified
+  changed:
+    plugin: callback
+    # The 'registered' timestamp in the source data is a string of the form
+    # 'yyyy-mm-dd hh:mm:ss', but Drupal wants a UNIX timestamp for 'created'.
+    source: modified
+    callable: strtotime
   #promote: featured
   #revision_uid: revision_uid
   #revision_log: log
