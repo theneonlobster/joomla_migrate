@@ -19,10 +19,14 @@ process:
   sticky:
     plugin: default_value
     default_value: 0
-  #langcode:
-  #  plugin: default_value
-  #  source: language
-  #  default_value: "und"
+  # PREPROCESSING STEPS: Prior to running migration with langcode enabled
+  # prepare Joomla database language field in content table to
+  # display as en for english or es for spanish instead of en-US
+  # or es-ES
+  langcode:
+    plugin: default_value
+    source: language
+    default_value: "und"
   #status: state
   created:
     plugin: callback
