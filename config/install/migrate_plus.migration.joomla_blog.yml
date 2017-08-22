@@ -1,0 +1,43 @@
+# Migration configuration for user accounts. We've described most of what goes
+# into migration configuration in migrate_plus.migration.beer_term.yml, so won't
+# repeat that here.
+id: joomla_blog
+label: Joomla Blogs
+migration_group: joomla
+source:
+  plugin: joomla_blog
+destination:
+  plugin: entity:node
+process:
+  # Hardcode the destination node type (bundle) as 'legacy_blog'.
+  type:
+    plugin: default_value
+    default_value: legacy_blog
+  field_author: Author
+  title: Title
+  'body/format':
+    plugin: default_value
+    default_value: rich_text
+  'body/value': Content
+  field_category: Category
+  field_blog_tags: Tags
+  # Another new process plugin - callback. This allows us to filter an incoming
+  # source value through an arbitrary PHP function. The function called must
+  # have one required argument.
+  created:
+    plugin: callback
+    # The 'registered' timestamp in the source data is a string of the form
+    # 'yyyy-mm-dd hh:mm:ss', but Drupal wants a UNIX timestamp for 'created'.
+    source: Created
+    callable: strtotime
+  field_email: Email
+
+migration_dependencies: {}
+
+# When a module is creating a custom content type it needs to add an
+# enforced dependency to itself, otherwise the content type will persist
+# after the module is disabled. See: https://www.drupal.org/node/2629516.
+dependencies:
+  enforced:
+    module:
+      - joomla_migrate

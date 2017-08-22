@@ -1,0 +1,7 @@
+joomlamigrate.settings:
+  path: 'admin/config/services/joomla'
+  defaults:
+    _form: '\Drupal\untappd\Form\JoomlaMigrateSettingsForm'
+    _title: 'Settings'
+  requirements:
+    _permission: 'administer joomla migrate'
